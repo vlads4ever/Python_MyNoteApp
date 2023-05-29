@@ -1,3 +1,4 @@
+from list_of_notes.list_of_notes import ListOfNotes
 from notes.list_note import ListNote
 from notes.text_note import TextNote
 
@@ -11,3 +12,10 @@ print()
 shoping_list = ["Молоко", "Мясо", "Сыр"]
 list_note = ListNote('Список покупок', shoping_list)
 print(list_note)
+print()
+
+list_of_notes = ListOfNotes()
+list_of_notes.push_note_to_list(text_note)
+list_of_notes.push_note_to_list(text_note_2)
+list_of_notes.push_note_to_list(shoping_list)
+print(list_of_notes.get_list_of_all_notes())
