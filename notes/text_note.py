@@ -8,7 +8,7 @@ class TextNote(AbstractNote):
     id_iter = itertools.count()
 
     def __init__(self, header_note: str, body_note: str):
-        self.id_note = next(self.id_iter)
+        self.id_note = 't_' + str(next(self.id_iter))
         self.header_note = header_note
         self.body_note = body_note
         self.creation_time = time.strftime('%d.%m.%Y %H:%M')

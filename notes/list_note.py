@@ -8,7 +8,7 @@ class ListNote(AbstractNote):
     id_iter = itertools.count()
 
     def __init__(self, header_note: str, body_note: list):
-        self.id_note = next(self.id_iter)
+        self.id_note = 'l_' + str(next(self.id_iter))
         self.header_note = header_note
         self.body_note = body_note
         self.creation_time = time.strftime('%d.%m.%Y %H:%M')
@@ -32,3 +32,9 @@ class ListNote(AbstractNote):
         output += f'Заголовок: {self.header_note}\n'
         output += self.get_for_print_body_note(self.body_note)
         return output
+
+    def __repr__(self):
+        return f'<id_note: {self.id_note}>' \
+               f'<header_note: {self.header_note}>' \
+               f'<body_note: {self.body_note}>' \
+               f'<creation_time: {self.creation_time}>'
