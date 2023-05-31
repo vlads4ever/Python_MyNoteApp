@@ -80,21 +80,22 @@ class ConsoleUI(AbstractUI):
 
     def save_storage(self):
         self.display('Сохранение заметок...')
-        path = input('Введите название файла (без расширения) >')
+        path = input('Введите название файла (без расширения) > ')
         path += '.json'
         self.presenter.save_storage(path)
 
     def load_storage(self):
         self.display('Загрузка заметок...')
-        path = input('Введите название файла (без расширения) >')
+        path = input('Введите название файла (без расширения) > ')
         path += '.json'
-        self.presenter.save_storage(path)
+        self.presenter.load_storage(path)
 
     def print_note(self):
         id_note = input('Введите ID заметки > ')
         self.presenter.print_note(id_note)
 
     def edit_note(self):
+        self.display('Редактирование заметки...')
         id_note = input('Введите ID заметки > ')
         if self.presenter.has_note(id_note):
             self.presenter.print_note(id_note)
@@ -111,5 +112,6 @@ class ConsoleUI(AbstractUI):
             self.display('Заметка не найдена.')
 
     def del_note(self):
+        self.display('Удаление заметки...')
         id_note = input('Введите ID заметки > ')
         self.presenter.del_note(id_note)
