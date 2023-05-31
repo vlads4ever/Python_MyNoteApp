@@ -1,11 +1,11 @@
 from abc import ABCMeta, abstractmethod
 
 
-class AbstractNote(metaclass=ABCMeta):
+class AbstractCommand(metaclass=ABCMeta):
     @abstractmethod
-    def get_header_note(self):
+    def get_description(self) -> str:
         pass
 
     @abstractmethod
-    def get_body_note(self):
+    def execute(self):
         pass
