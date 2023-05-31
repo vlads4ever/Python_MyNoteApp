@@ -79,12 +79,13 @@ class ConsoleUI(AbstractUI):
         self.presenter.print_list_notes()
 
     def save_storage(self):
-        self.display('Сохранение заметок')
+        self.display('Сохранение заметок...')
         path = input('Введите название файла (без расширения) >')
         path += '.json'
         self.presenter.save_storage(path)
 
     def load_storage(self):
+        self.display('Загрузка заметок...')
         path = input('Введите название файла (без расширения) >')
         path += '.json'
         self.presenter.save_storage(path)
