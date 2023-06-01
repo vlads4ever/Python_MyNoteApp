@@ -51,7 +51,7 @@ class ConsoleUI(AbstractUI):
             return False
 
     def check_command(self, num_command) -> bool:
-        if num_command > self.main_menu.size():
+        if num_command > self.main_menu.size() or num_command < 1:
             self.display(self.WRONG_VALUE)
             return False
         return True
