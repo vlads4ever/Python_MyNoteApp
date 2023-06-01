@@ -1,6 +1,7 @@
 import itertools
 import time
 
+from DateTime import DateTime
 from model.notes.abstract_note import AbstractNote
 
 
@@ -18,6 +19,9 @@ class TextNote(AbstractNote):
 
     def get_body(self) -> str:
         return self.body_note
+
+    def get_time(self) -> DateTime:
+        return DateTime.strptime(self.creation_time, '%d.%m.%Y %H:%M')
 
     def set_header(self, header_note: str):
         self.header_note = header_note

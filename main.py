@@ -1,6 +1,6 @@
 from model.saving.json_adapter import JSONAdapter
 from model.service import Service
-from presenter_package.presenter_module import PresenterModule
+from presenter_package.presenter import PresenterModule
 from view.console_ui import ConsoleUI
 
 if __name__ == '__main__':

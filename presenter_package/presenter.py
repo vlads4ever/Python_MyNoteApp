@@ -14,8 +14,11 @@ class PresenterModule:
     def create_list_note(self, head: str, body: list):
         self.service.create_list_note(head, body)
 
-    def print_list_notes(self):
-        self.view.display(self.service.get_list_notes())
+    def get_list_notes(self) -> list:
+        return self.service.get_list_notes()
+
+    def get_list_on_date(self, start: str, end: str) -> list:
+        return self.service.get_list_on_date(start, end)
 
     def save_storage(self, path: str):
         self.view.display(self.service.save_storage(path))

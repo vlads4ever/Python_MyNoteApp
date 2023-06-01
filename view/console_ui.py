@@ -1,4 +1,4 @@
-from presenter_package.presenter_module import PresenterModule
+from presenter_package.presenter import PresenterModule
 from view.abstract_ui import AbstractUI
 from view.main_menu import MainMenu
 
@@ -76,7 +76,31 @@ class ConsoleUI(AbstractUI):
         self.display('Заметка создана')
 
     def print_list_notes(self):
-        self.presenter.print_list_notes()
+        notes = self.presenter.get_list_notes()
+        output = 'Список заметок:' + '\n' + 'ID    Дата заметки:        Тема:' + '\n'
+        if len(notes) > 0:
+            for item in notes:
+                output += str(item.id_note) + ': ' + '(' + \
+                          item.creation_time + ') -> ' + \
+                          item.header_note + '\n'
+        else:
+            output += 'Записи отсутствуют'
+        self.display(output)
+
+    def print_list_on_date(self):
+        self.display('Задание диапазона дат...')
+        start = input('Введите начало диапазона (д.м.г Ч:М) > ')
+        end = input('Введите конец диапазона (д.м.г Ч:М) > ')
+        notes = self.presenter.get_list_on_date(start, end)
+        output = 'Список заметок в интервале с по :' + '\n' + 'ID    Дата заметки:        Тема:' + '\n'
+        if len(notes) > 0:
+            for item in notes:
+                output += str(item.id_note) + ': ' + '(' + \
+                          item.creation_time + ') -> ' + \
+                          item.header_note + '\n'
+        else:
+            output += 'Записи отсутствуют'
+        self.display(output)
 
     def save_storage(self):
         self.display('Сохранение заметок...')

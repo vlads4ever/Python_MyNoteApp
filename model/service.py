@@ -17,8 +17,11 @@ class Service:
         text_note = ListNote(head, body)
         self.notes.push(text_note)
 
-    def get_list_notes(self) -> str:
-        return self.notes.get_str_list()
+    def get_list_notes(self) -> list:
+        return self.notes.get_list()
+
+    def get_list_on_date(self, start: str, end: str) -> list:
+        return self.notes.get_list_on_date(start, end)
 
     def save_storage(self, path: str) -> str:
         self.save_adapter.save(self.notes, path)

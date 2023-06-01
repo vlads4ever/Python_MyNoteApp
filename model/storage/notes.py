@@ -9,15 +9,11 @@ class NotesStorage:
     def push(self, note: AbstractNote):
         self.notes.append(note)
 
-    def get_str_list(self):
-        output = 'Список заметок:' + '\n' + 'ID    Дата заметки:        Тема:' + '\n'
-        if len(self.notes) > 0:
-            for item in self.notes:
-                output += str(item.id_note) + ': ' + '(' + \
-                          item.creation_time + ') -> ' + \
-                          item.header_note + '\n'
-        else:
-            output += 'Записи отсутствуют'
+    def get_list(self) -> list:
+        return self.notes
+
+    def get_list_on_date(self, start: str, end: str) -> list:
+
         return output
 
     def get_note(self, id_note: str) -> str:
