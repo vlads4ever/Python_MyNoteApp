@@ -30,6 +30,10 @@ class AbstractUI(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def print_list_on_date(self):
+        pass
+
+    @abstractmethod
     def save_storage(self):
         pass
 

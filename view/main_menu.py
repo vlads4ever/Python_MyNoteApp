@@ -5,6 +5,7 @@ from view.commands.edit_note import EditNote
 from view.commands.exit import Exit
 from view.commands.load_storage import LoadStorage
 from view.commands.print_list_notes import PrintListNotes
+from view.commands.print_list_on_date import PrintListOnDate
 from view.commands.print_note import PrintNote
 from view.commands.save_storage import SaveStorage
 from view.abstract_ui import AbstractUI
@@ -17,10 +18,11 @@ class MainMenu:
         self.command_list.append(Exit(self.view))
         self.command_list.append(CreateTextNote(self.view))
         self.command_list.append(CreateListNote(self.view))
+        self.command_list.append(PrintListNotes(self.view))
+        self.command_list.append(PrintListOnDate(self.view))
         self.command_list.append(PrintNote(self.view))
         self.command_list.append(EditNote(self.view))
         self.command_list.append(DelNote(self.view))
-        self.command_list.append(PrintListNotes(self.view))
         self.command_list.append(SaveStorage(self.view))
         self.command_list.append(LoadStorage(self.view))
 

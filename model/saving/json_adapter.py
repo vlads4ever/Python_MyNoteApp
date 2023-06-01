@@ -21,9 +21,9 @@ class JSONAdapter(AbstractAdapter):
                 notes = NotesStorage()
                 for item in o:
                     if item['id_note'][0] == 'l':
-                        note = ListNote(item['header_note'], item['body_note'])
+                        note = ListNote(item['header_note'], item['body_note'], item['creation_time'])
                     elif item['id_note'][0] == 't':
-                        note = TextNote(item['header_note'], item['body_note'])
+                        note = TextNote(item['header_note'], item['body_note'], item['creation_time'])
                     notes.push(note)
                 return notes
             except AttributeError:

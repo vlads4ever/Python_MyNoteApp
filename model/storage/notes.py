@@ -1,3 +1,5 @@
+import time
+
 from model.notes.abstract_note import AbstractNote
 
 
@@ -13,8 +15,13 @@ class NotesStorage:
         return self.notes
 
     def get_list_on_date(self, start: str, end: str) -> list:
-
-        return output
+        start_date = time.strptime(start, '%d.%m.%Y %H:%M')
+        end_date = time.strptime(end, '%d.%m.%Y %H:%M')
+        filtered_list = list()
+        for note in self.notes:
+            if start_date <= note.get_time() <= end_date:
+                filtered_list.append(note)
+        return filtered_list
 
     def get_note(self, id_note: str) -> str:
         output = ''

@@ -14,8 +14,8 @@ class Service:
         self.notes.push(text_note)
 
     def create_list_note(self, head: str, body: list):
-        text_note = ListNote(head, body)
-        self.notes.push(text_note)
+        list_note = ListNote(head, body)
+        self.notes.push(list_note)
 
     def get_list_notes(self) -> list:
         return self.notes.get_list()

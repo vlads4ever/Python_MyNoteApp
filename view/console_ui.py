@@ -1,3 +1,5 @@
+import time
+
 from presenter_package.presenter import PresenterModule
 from view.abstract_ui import AbstractUI
 from view.main_menu import MainMenu
@@ -41,18 +43,18 @@ class ConsoleUI(AbstractUI):
 
     def is_int(self, value) -> bool:
         if value is None:
-            self.display(self.WRONG_VALUE)
+            self.display(self.WRONG_VALUE + '\n')
             return False
         try:
             int(value)
             return True
         except ValueError:
-            self.display(self.WRONG_VALUE)
+            self.display(self.WRONG_VALUE + '\n')
             return False
 
     def check_command(self, num_command) -> bool:
         if num_command > self.main_menu.size() or num_command < 1:
-            self.display(self.WRONG_VALUE)
+            self.display(self.WRONG_VALUE + '\n')
             return False
         return True
 
@@ -65,7 +67,7 @@ class ConsoleUI(AbstractUI):
         head = input('Введите тему > ')
         body = input('Введите содержание > ')
         self.presenter.create_text_note(head, body)
-        self.display('Заметка создана')
+        self.display('Заметка создана' + '\n')
 
     def create_list_note(self):
         self.display('Создание заметки-списка...')
@@ -73,7 +75,7 @@ class ConsoleUI(AbstractUI):
         user_list = input('Введите элементы списка (через запятую) > ')
         body = user_list.split(',')
         self.presenter.create_list_note(head, body)
-        self.display('Заметка создана')
+        self.display('Заметка создана' + '\n')
 
     def print_list_notes(self):
         notes = self.presenter.get_list_notes()
@@ -85,22 +87,37 @@ class ConsoleUI(AbstractUI):
                           item.header_note + '\n'
         else:
             output += 'Записи отсутствуют'
-        self.display(output)
+        self.display(output + '\n')
 
     def print_list_on_date(self):
         self.display('Задание диапазона дат...')
         start = input('Введите начало диапазона (д.м.г Ч:М) > ')
         end = input('Введите конец диапазона (д.м.г Ч:М) > ')
-        notes = self.presenter.get_list_on_date(start, end)
-        output = 'Список заметок в интервале с по :' + '\n' + 'ID    Дата заметки:        Тема:' + '\n'
-        if len(notes) > 0:
-            for item in notes:
-                output += str(item.id_note) + ': ' + '(' + \
-                          item.creation_time + ') -> ' + \
-                          item.header_note + '\n'
+        if self.is_date(start) and self.is_date(end):
+            notes = self.presenter.get_list_on_date(start, end)
+            output = f'Список заметок в интервале с {start} по {end} :' + \
+                     '\n' + 'ID    Дата заметки:        Тема:' + '\n'
+            if len(notes) > 0:
+                for item in notes:
+                    output += str(item.id_note) + ': ' + '(' + \
+                              item.creation_time + ') -> ' + \
+                              item.header_note + '\n'
+            else:
+                output += 'Записи отсутствуют' + '\n'
+            self.display(output)
         else:
-            output += 'Записи отсутствуют'
-        self.display(output)
+            self.display(self.WRONG_VALUE + '\n')
+
+    def is_date(self, date: str) -> bool:
+        if date is None:
+            self.display(self.WRONG_VALUE + '\n')
+            return False
+        try:
+            time.strptime(date, '%d.%m.%Y %H:%M')
+            return True
+        except ValueError:
+            self.display(self.WRONG_VALUE + '\n')
+            return False
 
     def save_storage(self):
         self.display('Сохранение заметок...')

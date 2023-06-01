@@ -21,19 +21,19 @@ class PresenterModule:
         return self.service.get_list_on_date(start, end)
 
     def save_storage(self, path: str):
-        self.view.display(self.service.save_storage(path))
+        self.view.display(self.service.save_storage(path) + '\n')
 
     def load_storage(self, path: str):
-        self.view.display(self.service.load_storage(path))
+        self.view.display(self.service.load_storage(path) + '\n')
 
     def print_note(self, id_note: str):
         self.view.display(self.service.get_note(id_note))
 
     def edit_note(self, id_note: str, head: str, body):
-        self.view.display(self.service.edit_note(id_note, head, body))
+        self.view.display(self.service.edit_note(id_note, head, body) + '\n')
 
     def del_note(self, id_note: str):
-        self.view.display(self.service.del_note(id_note))
+        self.view.display(self.service.del_note(id_note) + '\n')
 
     def has_note(self, id_note: str) -> bool:
         return self.service.has_note(id_note)

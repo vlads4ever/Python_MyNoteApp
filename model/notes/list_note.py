@@ -1,18 +1,20 @@
 import itertools
 import time
 
-from DateTime import DateTime
 from model.notes.abstract_note import AbstractNote
 
 
 class ListNote(AbstractNote):
     id_iter = itertools.count()
 
-    def __init__(self, header_note: str, body_note: list):
+    def __init__(self, header_note: str, body_note: list, provided_time=None):
         self.id_note = 'l_' + str(next(self.id_iter))
         self.header_note = header_note
         self.body_note = body_note
-        self.creation_time = time.strftime('%d.%m.%Y %H:%M')
+        if provided_time is None:
+            self.creation_time = time.strftime('%d.%m.%Y %H:%M')
+        else:
+            self.creation_time = provided_time
 
     def get_header(self) -> str:
         return self.header_note
@@ -20,8 +22,8 @@ class ListNote(AbstractNote):
     def get_body(self) -> list:
         return self.body_note
 
-    def get_time(self) -> DateTime:
-        return DateTime.strptime(self.creation_time, '%d.%m.%Y %H:%M')
+    def get_time(self) -> time.struct_time:
+        return time.strptime(self.creation_time, '%d.%m.%Y %H:%M')
 
     def set_header(self, header_note: str):
         self.header_note = header_note
