@@ -13,9 +13,8 @@ class ConsoleUI(AbstractUI):
 
     def welcome(self):
         self.display('Добро пожаловать в MyNoteApp!')
-        self.display('*****************************')
-        self.display('')
-        self.display('Вы можете загрузить базу MyNotes.json.')
+        self.display('*****************************' + '\n')
+        self.display('Вы можете загрузить базу MyNotes.json.' + '\n')
 
     def start(self):
         self.welcome()
@@ -37,6 +36,7 @@ class ConsoleUI(AbstractUI):
         if self.is_int(user_input):
             num_command = int(user_input)
             if self.check_command(num_command):
+                self.display('-------------------------------------' + '\n')
                 self.main_menu.execute(num_command)
 
     def is_int(self, value) -> bool:

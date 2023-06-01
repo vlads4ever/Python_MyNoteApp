@@ -26,10 +26,10 @@ class MainMenu:
 
     def print(self) -> str:
         output = ''
-        output += '~~~~~~~~~~~~~~~~~~~~~~Меню:~~~~~~~~~~~~~~~~~~~~~~' + '\n'
+        output += '~~~~~~~~~~~~~~~~Меню:~~~~~~~~~~~~~~~~' + '\n'
         for i in range(len(self.command_list)):
             output += str(i+1) + ': ' + self.command_list[i].get_description() + '\n'
-        output += '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' + '\n'
+        output += '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' + '\n'
         return output
 
     def execute(self, num_command: int):
