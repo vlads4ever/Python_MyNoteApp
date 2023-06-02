@@ -44,7 +44,20 @@ class NotesStorage:
                 output = 'Заметка не найдена.'
         return output
 
-    def edit_note(self, id_note: str, head: str, body) -> str:
+    def edit_text_note(self, id_note: str, head: str, body: str) -> str:
+        output = ''
+        for note in self.notes:
+            if id_note == note.id_note:
+                note.set_header(head)
+                note.set_body(body)
+                note.time_renew()
+                output = 'Заметка изменена.'
+                break
+            else:
+                output = 'Заметка не найдена.'
+        return output
+
+    def edit_list_note(self, id_note: str, head: str, body: list) -> str:
         output = ''
         for note in self.notes:
             if id_note == note.id_note:

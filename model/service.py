@@ -34,8 +34,11 @@ class Service:
     def get_note(self, id_note: str) -> str:
         return self.notes.get_note(id_note)
 
-    def edit_note(self, id_note: str, head: str, body) -> str:
-        return self.notes.edit_note(id_note, head, body)
+    def edit_text_note(self, id_note: str, head: str, body: str) -> str:
+        return self.notes.edit_text_note(id_note, head, body)
+
+    def edit_list_note(self, id_note: str, head: str, body: list) -> str:
+        return self.notes.edit_list_note(id_note, head, body)
 
     def del_note(self, id_note: str) -> str:
         return self.notes.del_note(id_note)

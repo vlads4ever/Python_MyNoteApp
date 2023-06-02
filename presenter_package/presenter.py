@@ -29,8 +29,11 @@ class PresenterModule:
     def print_note(self, id_note: str):
         self.view.display(self.service.get_note(id_note))
 
-    def edit_note(self, id_note: str, head: str, body):
-        self.view.display(self.service.edit_note(id_note, head, body) + '\n')
+    def edit_text_note(self, id_note: str, head: str, body: str):
+        self.view.display(self.service.edit_text_note(id_note, head, body) + '\n')
+
+    def edit_list_note(self, id_note: str, head: str, body: list):
+        self.view.display(self.service.edit_list_note(id_note, head, body) + '\n')
 
     def del_note(self, id_note: str):
         self.view.display(self.service.del_note(id_note) + '\n')

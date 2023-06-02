@@ -144,11 +144,12 @@ class ConsoleUI(AbstractUI):
             if id_note[0] == 't':
                 head = input('Введите тему > ')
                 body = input('Введите содержание > ')
+                self.presenter.edit_text_note(id_note, head, body)
             else:
                 head = input('Введите тему > ')
                 user_list = input('Введите элементы списка (через запятую) > ')
                 body = user_list.split(',')
-            self.presenter.edit_note(id_note, head, body)
+                self.presenter.edit_list_note(id_note, head, body)
         else:
             self.display('Заметка не найдена.')
 
