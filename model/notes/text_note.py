@@ -16,7 +16,6 @@ class TextNote(AbstractNote):
         else:
             self.creation_time = provided_time
 
-
     def get_header(self) -> str:
         return self.header_note
 
