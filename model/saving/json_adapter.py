@@ -11,7 +11,7 @@ class JSONAdapter(AbstractAdapter):
     def save(obj, path: str):
         with open(path, "w") as fw:
             if isinstance(obj, NotesStorage):
-                json.dump([o.__dict__ for o in obj.notes], fw, indent=5, sort_keys=True)
+                json.dump([o.__dict__ for o in obj.get_list()], fw, indent=5, sort_keys=True)
 
     @staticmethod
     def load(path) -> NotesStorage:
@@ -20,10 +20,14 @@ class JSONAdapter(AbstractAdapter):
             try:
                 notes = NotesStorage()
                 for item in o:
-                    if item['id_note'][0] == 'l':
-                        note = ListNote(item['header_note'], item['body_note'], item['creation_time'])
-                    elif item['id_note'][0] == 't':
-                        note = TextNote(item['header_note'], item['body_note'], item['creation_time'])
+                    if item.__contains__('_ListNote__id_note'):
+                        note = ListNote(item['_ListNote__header_note'],
+                                        item['_ListNote__body_note'],
+                                        item['_ListNote__creation_time'])
+                    elif item.__contains__('_TextNote__id_note'):
+                        note = TextNote(item['_TextNote__header_note'],
+                                        item['_TextNote__body_note'],
+                                        item['_TextNote__creation_time'])
                     notes.push(note)
                 return notes
             except AttributeError:

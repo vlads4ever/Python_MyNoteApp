@@ -13,29 +13,29 @@ from view.abstract_ui import AbstractUI
 
 class MainMenu:
     def __init__(self, view: AbstractUI):
-        self.view = view
-        self.command_list = list()
-        self.command_list.append(Exit(self.view))
-        self.command_list.append(CreateTextNote(self.view))
-        self.command_list.append(CreateListNote(self.view))
-        self.command_list.append(PrintListNotes(self.view))
-        self.command_list.append(PrintListOnDate(self.view))
-        self.command_list.append(PrintNote(self.view))
-        self.command_list.append(EditNote(self.view))
-        self.command_list.append(DelNote(self.view))
-        self.command_list.append(SaveStorage(self.view))
-        self.command_list.append(LoadStorage(self.view))
+        self.__view = view
+        self.__command_list = list()
+        self.__command_list.append(Exit(self.__view))
+        self.__command_list.append(CreateTextNote(self.__view))
+        self.__command_list.append(CreateListNote(self.__view))
+        self.__command_list.append(PrintListNotes(self.__view))
+        self.__command_list.append(PrintListOnDate(self.__view))
+        self.__command_list.append(PrintNote(self.__view))
+        self.__command_list.append(EditNote(self.__view))
+        self.__command_list.append(DelNote(self.__view))
+        self.__command_list.append(SaveStorage(self.__view))
+        self.__command_list.append(LoadStorage(self.__view))
 
     def print(self) -> str:
         output = ''
         output += '~~~~~~~~~~~~~~~~Меню:~~~~~~~~~~~~~~~~' + '\n'
-        for i in range(len(self.command_list)):
-            output += str(i+1) + ': ' + self.command_list[i].get_description() + '\n'
+        for i in range(len(self.__command_list)):
+            output += str(i+1) + ': ' + self.__command_list[i].get_description() + '\n'
         output += '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' + '\n'
         return output
 
     def execute(self, num_command: int):
-        self.command_list[num_command-1].execute()
+        self.__command_list[num_command - 1].execute()
 
     def size(self) -> int:
-        return len(self.command_list)
+        return len(self.__command_list)

@@ -3,11 +3,19 @@ from abc import ABCMeta, abstractmethod
 
 class AbstractNote(metaclass=ABCMeta):
     @abstractmethod
+    def get_id_note(self):
+        pass
+
+    @abstractmethod
     def get_header(self):
         pass
 
     @abstractmethod
     def get_body(self):
+        pass
+
+    @abstractmethod
+    def get_creation_time(self):
         pass
 
     @abstractmethod
