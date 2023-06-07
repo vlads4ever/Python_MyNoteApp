@@ -1,5 +1,5 @@
-from view.commands.abstract_command import AbstractCommand
-from view.abstract_ui import AbstractUI
+from view_package.commands.abstract_command import AbstractCommand
+from view_package.abstract_ui import AbstractUI
 
 
 class CreateListNote(AbstractCommand):

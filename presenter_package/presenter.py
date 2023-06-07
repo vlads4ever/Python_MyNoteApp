@@ -1,5 +1,5 @@
-from model.service import Service
-from view.abstract_ui import AbstractUI
+from model_package.service import Service
+from view_package.abstract_ui import AbstractUI
 
 
 class PresenterModule:

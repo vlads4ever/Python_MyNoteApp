@@ -1,9 +1,9 @@
 import json
 
-from model.notes.list_note import ListNote
-from model.notes.text_note import TextNote
-from model.saving.abstract_adapter import AbstractAdapter
-from model.storage.notes import NotesStorage
+from model_package.notes.list_note import ListNote
+from model_package.notes.text_note import TextNote
+from model_package.saving.abstract_adapter import AbstractAdapter
+from model_package.storage.notes import NotesStorage
 
 
 class JSONAdapter(AbstractAdapter):

@@ -1,8 +1,8 @@
 import time
 
 from presenter_package.presenter import PresenterModule
-from view.abstract_ui import AbstractUI
-from view.main_menu import MainMenu
+from view_package.abstract_ui import AbstractUI
+from view_package.main_menu import MainMenu
 
 
 class ConsoleUI(AbstractUI):

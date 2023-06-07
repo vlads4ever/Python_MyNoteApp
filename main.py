@@ -1,7 +1,7 @@
-from model.saving.json_adapter import JSONAdapter
-from model.service import Service
+from model_package.saving.json_adapter import JSONAdapter
+from model_package.service import Service
 from presenter_package.presenter import PresenterModule
-from view.console_ui import ConsoleUI
+from view_package.console_ui import ConsoleUI
 
 if __name__ == '__main__':
     view = ConsoleUI()

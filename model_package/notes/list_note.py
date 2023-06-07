@@ -1,14 +1,14 @@
 import itertools
 import time
 
-from model.notes.abstract_note import AbstractNote
+from model_package.notes.abstract_note import AbstractNote
 
 
-class TextNote(AbstractNote):
+class ListNote(AbstractNote):
     id_iter = itertools.count()
 
-    def __init__(self, header_note: str, body_note: str, provided_time=None):
-        self.__id_note = 't_' + str(next(self.id_iter))
+    def __init__(self, header_note: str, body_note: list, provided_time=None):
+        self.__id_note = 'l_' + str(next(self.id_iter))
         self.__header_note = header_note
         self.__body_note = body_note
         if provided_time is None:
@@ -22,7 +22,7 @@ class TextNote(AbstractNote):
     def get_header(self) -> str:
         return self.__header_note
 
-    def get_body(self) -> str:
+    def get_body(self) -> list:
         return self.__body_note
 
     def get_creation_time(self) -> str:
@@ -34,17 +34,24 @@ class TextNote(AbstractNote):
     def set_header(self, header_note: str):
         self.__header_note = header_note
 
-    def set_body(self, body_note: str):
+    def set_body(self, body_note: list):
         self.__body_note = body_note
 
     def time_renew(self):
         self.__creation_time = time.strftime('%d.%m.%Y %H:%M')
 
+    @staticmethod
+    def body_to_str(item_list: list) -> str:
+        output = ''
+        for item in item_list:
+            output += '* ' + item + '\n'
+        return output
+
     def __str__(self) -> str:
         output = f'ID заметки: {self.__id_note}\n'
         output += f'Дата заметки: {self.__creation_time}\n'
         output += f'Заголовок: {self.__header_note}\n'
-        output += f'Тело заметки:\n{self.__body_note}'
+        output += self.body_to_str(self.__body_note)
         return output
 
     def __repr__(self) -> str:

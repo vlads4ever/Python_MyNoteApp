@@ -1,6 +1,6 @@
 import time
 
-from model.notes.abstract_note import AbstractNote
+from model_package.notes.abstract_note import AbstractNote
 
 
 class NotesStorage:
